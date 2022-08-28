@@ -72,7 +72,7 @@ namespace WritingContest1.Controllers
         }
 
         [HttpPut("UpdatePhone/{id}")]
-        public async Task<ActionResult<Author>> UpdatePhone(int id, string phone)
+        public async Task<ActionResult<AuthorContact>> UpdatePhone(int id, string phone)
         {
             try
             {

@@ -48,14 +48,14 @@ namespace WritingContest1.Controllers
             return Ok(author);
         }
 
-/*        [HttpGet("GetAuthor+Contact/{id}")]
-        public async Task<IActionResult> GetAuthorAndContact([FromRoute] int id)
-        {
-            //var author = await _context.Authors.FindAsync(id);
-            var author = await _context.Authors.Where(x => x.Id == id).Include(x => x.AuthorContact).FirstOrDefaultAsync();
+        /*        [HttpGet("GetAuthor+Contact/{id}")]
+                public async Task<IActionResult> GetAuthorAndContact([FromRoute] int id)
+                {
+                    //var author = await _context.Authors.FindAsync(id);
+                    var author = await _context.Authors.Include(x => x.AuthorContact).Where(x => x.Id == id).ToListAsync();
 
-            return Ok(author);
-        }*/
+                    return Ok(author);
+                }*/
 
         [HttpDelete("DeleteAuthor{id}")]
         public async Task<ActionResult<Author>> DeleteAuthor(int id)

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WritingContest1.DAL;
 
 namespace WritingContest1.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220828094859_AddedStory")]
+    partial class AddedStory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,22 +67,6 @@ namespace WritingContest1.DAL.Migrations
                     b.ToTable("AuthorContacts");
                 });
 
-            modelBuilder.Entity("WritingContest1.DAL.Entities.Genre", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Genres");
-                });
-
             modelBuilder.Entity("WritingContest1.DAL.Entities.Story", b =>
                 {
                     b.Property<int>("Id")
@@ -105,28 +91,6 @@ namespace WritingContest1.DAL.Migrations
                     b.ToTable("Stories");
                 });
 
-            modelBuilder.Entity("WritingContest1.DAL.Entities.StoryGenre", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GenreId");
-
-                    b.HasIndex("StoryId");
-
-                    b.ToTable("StoryGenres");
-                });
-
             modelBuilder.Entity("WritingContest1.DAL.Entities.AuthorContact", b =>
                 {
                     b.HasOne("WritingContest1.DAL.Entities.Author", "Author")
@@ -147,40 +111,11 @@ namespace WritingContest1.DAL.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("WritingContest1.DAL.Entities.StoryGenre", b =>
-                {
-                    b.HasOne("WritingContest1.DAL.Entities.Genre", "Genre")
-                        .WithMany("StoryGenres")
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WritingContest1.DAL.Entities.Story", "Story")
-                        .WithMany("StoryGenres")
-                        .HasForeignKey("StoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Genre");
-
-                    b.Navigation("Story");
-                });
-
             modelBuilder.Entity("WritingContest1.DAL.Entities.Author", b =>
                 {
                     b.Navigation("AuthorContact");
 
                     b.Navigation("Stories");
-                });
-
-            modelBuilder.Entity("WritingContest1.DAL.Entities.Genre", b =>
-                {
-                    b.Navigation("StoryGenres");
-                });
-
-            modelBuilder.Entity("WritingContest1.DAL.Entities.Story", b =>
-                {
-                    b.Navigation("StoryGenres");
                 });
 #pragma warning restore 612, 618
         }

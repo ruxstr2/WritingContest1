@@ -14,5 +14,6 @@ namespace WritingContest1.DAL.Entities
         public string Name { get; set; }
         public string City { get; set; }
         public virtual AuthorContact AuthorContact { get; set; }
+        public virtual ICollection<Story> Stories { get; set; }
     }
 }
