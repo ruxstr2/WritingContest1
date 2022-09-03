@@ -42,6 +42,8 @@ namespace WritingContest1
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnString")));
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IAuthorManager, AuthorManager>();
+            services.AddTransient<IGenreRepository, GenreRepository>();
+            services.AddTransient<IGenreManager, GenreManager>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WritingContest1", Version = "v1" });
