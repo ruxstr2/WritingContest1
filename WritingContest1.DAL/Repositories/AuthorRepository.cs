@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WritingContest1.DAL.Entities;
 using WritingContest1.DAL.Interfaces;
+using WritingContest1.DAL.Models;
 
 namespace WritingContest1.DAL.Repositories
 {
@@ -30,22 +31,21 @@ namespace WritingContest1.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Author>> GetAll()
+        public async Task<List<AuthorModels>> GetAll()
         {
-            var students = await (await GetAllQuery()).ToListAsync();
-            /*    var list = new List<StudentModels>();
-                foreach (var student in students)
+            var authors = await (await GetAllQuery()).ToListAsync();
+            var list = new List<AuthorModels>();
+                foreach (var author in authors)
                 {
-                    var studentModel = new StudentModels
+                    var authorModel = new AuthorModels
                     {
-                        Name = student.Name
+                        Name = author.Name
                     };
-                    list.Add(studentModel);
+                    list.Add(authorModel);
                 }
 
                 //var students = _context.Students.WhereClauses();
-                return list;*/
-            return students;
+                return list;
 
         }
 
