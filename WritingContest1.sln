@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WritingContest1", "WritingContest1\WritingContest1.csproj", "{6EEC495E-4ACF-45BF-A419-F3515F3A5CC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WritingContest1.DAL", "WritingContest1.DAL\WritingContest1.DAL.csproj", "{CFAA0A06-2DB0-4CB8-B7AC-2C7EC78B7087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WritingContest1.DAL", "WritingContest1.DAL\WritingContest1.DAL.csproj", "{CFAA0A06-2DB0-4CB8-B7AC-2C7EC78B7087}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WritingContest1.BLL", "WritingContest1.BLL\WritingContest1.BLL.csproj", "{4DD213C6-D045-4164-B47C-8D4E034F6D6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CFAA0A06-2DB0-4CB8-B7AC-2C7EC78B7087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFAA0A06-2DB0-4CB8-B7AC-2C7EC78B7087}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFAA0A06-2DB0-4CB8-B7AC-2C7EC78B7087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD213C6-D045-4164-B47C-8D4E034F6D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD213C6-D045-4164-B47C-8D4E034F6D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD213C6-D045-4164-B47C-8D4E034F6D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD213C6-D045-4164-B47C-8D4E034F6D6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

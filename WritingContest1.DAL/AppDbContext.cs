@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace WritingContest1.DAL
         public DbSet<Story> Stories { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<StoryGenre> StoryGenres { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLoggerFactory(LoggerFactory.Create(options => options.AddConsole()));
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

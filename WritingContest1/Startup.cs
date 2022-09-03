@@ -13,7 +13,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using WritingContest1.BLL.Interfaces;
+using WritingContest1.BLL.Managers;
 using WritingContest1.DAL;
+using WritingContest1.DAL.Interfaces;
+using WritingContest1.DAL.Repositories;
 
 namespace WritingContest1
 {
@@ -31,9 +35,13 @@ namespace WritingContest1
         {
 
             services.AddControllers();
-            services.AddControllers().AddJsonOptions(x =>
-            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddControllers()
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            //services.AddControllers().AddJsonOptions(x =>
+            //x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnString")));
+            services.AddTransient<IAuthorRepository, AuthorRepository>();
+            services.AddTransient<IAuthorManager, AuthorManager>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WritingContest1", Version = "v1" });
