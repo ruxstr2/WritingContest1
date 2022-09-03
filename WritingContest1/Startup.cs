@@ -44,6 +44,8 @@ namespace WritingContest1
             services.AddTransient<IAuthorManager, AuthorManager>();
             services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddTransient<IGenreManager, GenreManager>();
+            services.AddTransient<IStoryRepository, StoryRepository>();
+            services.AddTransient<IStoryManager, StoryManager>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WritingContest1", Version = "v1" });
