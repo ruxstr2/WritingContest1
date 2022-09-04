@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,15 @@ using WritingContest1.DAL.Entities;
 
 namespace WritingContest1.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<
+        User,
+        Role,
+        int,
+        IdentityUserClaim<int>,
+        UserRole,
+        IdentityUserLogin<int>,
+        IdentityRoleClaim<int>,
+        IdentityUserToken<int>>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
