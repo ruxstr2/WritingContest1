@@ -13,7 +13,7 @@ using WritingContest1.DAL.Entities;
 
 namespace WritingContest1.BLL.Helpers
 {
-    class TokenHelper : ITokenHelper
+    public class TokenHelper : ITokenHelper
     {
         private readonly IConfiguration _configuration;
         private readonly UserManager<User> _userManager;

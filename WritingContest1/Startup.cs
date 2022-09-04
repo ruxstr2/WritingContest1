@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using WritingContest1.BLL.Helpers;
 using WritingContest1.BLL.Interfaces;
 using WritingContest1.BLL.Managers;
 using WritingContest1.DAL;
@@ -51,6 +52,8 @@ namespace WritingContest1
             services.AddTransient<IGenreManager, GenreManager>();
             services.AddTransient<IStoryRepository, StoryRepository>();
             services.AddTransient<IStoryManager, StoryManager>();
+            services.AddTransient<IAuthManager, AuthManager>();
+            services.AddTransient<ITokenHelper, TokenHelper>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WritingContest1", Version = "v1" });
