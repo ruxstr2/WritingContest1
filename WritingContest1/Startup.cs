@@ -54,6 +54,7 @@ namespace WritingContest1
             services.AddTransient<IStoryManager, StoryManager>();
             services.AddTransient<IAuthManager, AuthManager>();
             services.AddTransient<ITokenHelper, TokenHelper>();
+            services.AddTransient<InitialSeed>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WritingContest1", Version = "v1" });
@@ -99,12 +100,12 @@ namespace WritingContest1
             services.AddAuthorization(opt =>
             {
                 opt.AddPolicy("Admin", policy => policy.RequireRole("Admin").RequireAuthenticatedUser().AddAuthenticationSchemes("AuthScheme").Build());
-                opt.AddPolicy("Guest", policy => policy.RequireRole("Guest").RequireAuthenticatedUser().AddAuthenticationSchemes("AuthScheme").Build());
+                opt.AddPolicy("Student", policy => policy.RequireRole("Student").RequireAuthenticatedUser().AddAuthenticationSchemes("AuthScheme").Build());
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, InitialSeed initialSeed)
         {
             if (env.IsDevelopment())
             {
@@ -123,6 +124,8 @@ namespace WritingContest1
             {
                 endpoints.MapControllers();
             });
+
+            initialSeed.CreateRoles();
         }
     }
 }
